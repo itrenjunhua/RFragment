@@ -43,7 +43,7 @@ object SystemBarUtils {
      */
     @JvmStatic
     fun setStatusWhiteAndDark(activity: Activity) {
-        setSystemBarColor(activity, R.color.white)
+        setSystemBarColor(activity, R.color.color_white)
         setStatusBarDark(activity, true)
         setFitsSystemWindows(activity, true)
     }
@@ -56,7 +56,7 @@ object SystemBarUtils {
      */
     @JvmStatic
     fun setStatusWhiteAndDark(activity: Activity, navigationBar: Boolean) {
-        setSystemBarColor(activity, R.color.white, navigationBar)
+        setSystemBarColor(activity, R.color.color_white, navigationBar)
         setStatusBarDark(activity, true)
         setFitsSystemWindows(activity, true)
     }

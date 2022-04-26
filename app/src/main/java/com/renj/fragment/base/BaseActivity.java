@@ -3,12 +3,19 @@ package com.renj.fragment.base;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.widget.FrameLayout;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.LayoutRes;
 import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.renj.fragment.R;
+import com.renj.fragment.utils.ResUtils;
 import com.renj.fragment.utils.SystemBarUtils;
+import com.renj.fragment.widget.TitleView;
 
 /**
  * ======================================================================
@@ -24,6 +31,7 @@ import com.renj.fragment.utils.SystemBarUtils;
  * ======================================================================
  */
 public abstract class BaseActivity extends AppCompatActivity {
+    protected TitleView titleView;
 
     public BaseActivity() {
         super();
@@ -36,13 +44,33 @@ public abstract class BaseActivity extends AppCompatActivity {
         beforeInitViewData();
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
 
-        setContentView(getLayoutId());
+        setContentView(R.layout.base_activity);
+        titleView = findViewById(R.id.page_title);
+        FrameLayout pageContent = findViewById(R.id.page_content);
+        LayoutInflater.from(this).inflate(getLayoutId(), pageContent, true);
 
         SystemBarUtils.setStatusWhiteAndDark(this);
 
         initView();
         initListener();
+        initBack();
         initData(getIntent());
+    }
+
+    private void initBack() {
+        // 顶部返回按钮
+        titleView.setOnBackViewClickListener(this::handlerOnBack);
+        // 物理返回按钮
+        getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
+            @Override
+            public void handleOnBackPressed() {
+                handlerOnBack();
+            }
+        });
+    }
+
+    protected void handlerOnBack() {
+        finish();
     }
 
     protected void beforeInitViewData() {
@@ -53,6 +81,14 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     protected void structureMethod() {
 
+    }
+
+    public void setTitle(@StringRes int titleId) {
+        setTitle(ResUtils.getString(titleId));
+    }
+
+    public void setTitle(String title) {
+        titleView.setTitleContent(title);
     }
 
     @LayoutRes

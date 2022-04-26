@@ -1,3 +1,13 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="Typos">
     <string name="app_name">RFragment</string>
+
+    <string name="main_title">Fragment 常用方式Demo</string>
+
+    <string name="add_fragment">使用 Add 增加 Fragment 到页面</string>
+    <string name="add_fragment1">Fragment1显示</string>
+    <string name="add_fragment2">Fragment2显示</string>
+
+    <string name="replace_fragment">使用 replace 替换页面 Fragment</string>
+    <string name="replace_fragment1">Fragment1替换</string>
+    <string name="replace_fragment2">Fragment2替换</string>
 </resources>
