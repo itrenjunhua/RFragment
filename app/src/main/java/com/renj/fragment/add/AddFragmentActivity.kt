@@ -38,8 +38,8 @@ class AddFragmentActivity : BaseActivity() {
     }
 
     override fun initView() {
-        tvFragment1 = findViewById<TextView>(R.id.tv_fragment1)
-        tvFragment2 = findViewById<TextView>(R.id.tv_fragment2)
+        tvFragment1 = findViewById(R.id.tv_fragment1)
+        tvFragment2 = findViewById(R.id.tv_fragment2)
 
         addFragment1 = AddFragment1.newInstance()
         addFragment2 = AddFragment2.newInstance()
@@ -47,7 +47,7 @@ class AddFragmentActivity : BaseActivity() {
         supportFragmentManager.beginTransaction()
             .add(R.id.fl_content, addFragment1)
             .add(R.id.fl_content, addFragment2)
-            .commitAllowingStateLoss();
+            .commitAllowingStateLoss()
         changeShowFragment(addFragment1, addFragment2)
     }
 

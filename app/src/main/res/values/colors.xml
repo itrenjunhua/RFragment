@@ -16,7 +16,7 @@
     <color name="color_content_bg_one">#33FF0000</color>
     <color name="color_content_bg_two">#3300FF00</color>
     <color name="color_content_bg_three">#330000FF</color>
-    <color name="color_content_bg_four">#336666FF</color>
+    <color name="color_content_bg_four">#3300FFFF</color>
     <color name="color_content_bg_five">#33FF00FF</color>
     <color name="color_content_bg_six">#33FFFF00</color>
 </resources>

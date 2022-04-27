@@ -4,6 +4,7 @@ import android.content.Intent
 import android.widget.TextView
 import com.renj.fragment.add.AddFragmentActivity
 import com.renj.fragment.base.BaseActivity
+import com.renj.fragment.replace.ReplaceFragmentActivity
 
 class MainActivity : BaseActivity() {
     override fun getLayoutId(): Int {
@@ -21,6 +22,10 @@ class MainActivity : BaseActivity() {
     override fun initListener() {
         findViewById<TextView>(R.id.tv_add_fragment).setOnClickListener {
             AddFragmentActivity.launch(this)
+        }
+
+        findViewById<TextView>(R.id.tv_replace_fragment).setOnClickListener {
+            ReplaceFragmentActivity.launch(this)
         }
     }
 }

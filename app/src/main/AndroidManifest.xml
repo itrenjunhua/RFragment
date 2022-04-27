@@ -23,6 +23,10 @@
         <activity
             android:name=".add.AddFragmentActivity"
             android:label="@string/add_fragment" />
+
+        <activity
+            android:name=".replace.ReplaceFragmentActivity"
+            android:label="@string/replace_fragment" />
     </application>
 
 </manifest>

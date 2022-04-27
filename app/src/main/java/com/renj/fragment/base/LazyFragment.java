@@ -1,5 +1,6 @@
 package com.renj.fragment.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,6 +30,8 @@ import java.util.List;
  * ======================================================================
  */
 public abstract class LazyFragment extends BaseFragment {
+    private final String TAG = getClass().getSimpleName();
+
     private static final int FRAGMENT_STATUS_UN_INIT = -1;
     private static final int FRAGMENT_STATUS_INIT_FINISH = 0;
     private static final int FRAGMENT_STATUS_FIRST_VISIBLE = 1;
@@ -41,10 +44,22 @@ public abstract class LazyFragment extends BaseFragment {
     // onHiddenChanged() 或者 setUserVisibleHint() 方法当前状态是否为对用户可见状态
     private boolean hiddenAndVisibleStatusVisible = true;
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        Logger.i(TAG + " onAttach ============= ");
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Logger.i(TAG + " onCreate ============= ");
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Logger.i(this.getClass().getSimpleName() + " onCreateView ============= ");
+        Logger.i(TAG + " onCreateView ============= ");
         currentFragment = FRAGMENT_STATUS_UN_INIT;
         View view = super.onCreateView(inflater, container, savedInstanceState);
         currentFragment = FRAGMENT_STATUS_INIT_FINISH;
@@ -54,13 +69,13 @@ public abstract class LazyFragment extends BaseFragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Logger.i(this.getClass().getSimpleName() + " onActivityCreated ============= ");
+        Logger.i(TAG + " onActivityCreated ============= ");
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        Logger.i(this.getClass().getSimpleName() + " onResume ============= " + currentFragment + " -- " + hiddenAndVisibleStatusVisible);
+        Logger.i(TAG + " onResume ============= " + currentFragment + " -- " + hiddenAndVisibleStatusVisible);
 
         if (hiddenAndVisibleStatusVisible) {
             if (currentFragment == FRAGMENT_STATUS_INIT_FINISH) {
@@ -80,7 +95,7 @@ public abstract class LazyFragment extends BaseFragment {
     @Override
     public void onPause() {
         super.onPause();
-        Logger.i(this.getClass().getSimpleName() + " onPause ============= " + currentFragment + " -- " + hiddenAndVisibleStatusVisible);
+        Logger.i(TAG + " onPause ============= " + currentFragment + " -- " + hiddenAndVisibleStatusVisible);
 
         if (hiddenAndVisibleStatusVisible) {
             if (currentFragment == FRAGMENT_STATUS_FIRST_VISIBLE) {
@@ -129,7 +144,7 @@ public abstract class LazyFragment extends BaseFragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         hiddenAndVisibleStatusVisible = isVisibleToUser;
-        Logger.i(this.getClass().getSimpleName() + " setUserVisibleHint ============= isVisibleToUser: " + isVisibleToUser);
+        Logger.i(TAG + " setUserVisibleHint ============= isVisibleToUser: " + isVisibleToUser);
 
         if (isVisibleToUser) {
             if (currentFragment == FRAGMENT_STATUS_INIT_FINISH) {
@@ -159,28 +174,28 @@ public abstract class LazyFragment extends BaseFragment {
      * 用户 <b>第一次可见，用于延迟加载数据</b>。非第一次可见时不会执行该方法，只会执行 {@link #userVisible()}
      */
     protected void userFirstVisible() {
-        Logger.i(this.getClass().getSimpleName() + " fistVisible ============= 用户第一次可见");
+        Logger.i(TAG + " fistVisible ============= 用户第一次可见");
     }
 
     /**
      * 用户<b>非第一次可见</b>。第一次可见时不会执行该方法，只会执行 {@link #userFirstVisible()}
      */
     protected void userVisible() {
-        Logger.i(this.getClass().getSimpleName() + " visible ============= 用户可见");
+        Logger.i(TAG + " visible ============= 用户可见");
     }
 
     /**
      * 用户<b>第一次不可见</b>。非第一次不可见时不会执行该方法，只会执行 {@link #userInVisible()}
      */
     protected void userFirstInVisible() {
-        Logger.i(this.getClass().getSimpleName() + " fistInVisible ============= 用户第一次不可见");
+        Logger.i(TAG + " fistInVisible ============= 用户第一次不可见");
     }
 
     /**
      * 用户<b>非第一次不可见</b>。第一次不可见时不会执行该方法，只会执行 {@link #userFirstInVisible()}
      */
     protected void userInVisible() {
-        Logger.i(this.getClass().getSimpleName() + " inVisible ============= 用户不可见");
+        Logger.i(TAG + " inVisible ============= 用户不可见");
     }
 
     /**
@@ -211,5 +226,23 @@ public abstract class LazyFragment extends BaseFragment {
                 }
             }
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Logger.i(TAG + " onDestroyView ============= ");
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        Logger.i(TAG + " onDestroy ============= ");
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Logger.i(TAG + " onDetach ============= ");
     }
 }
