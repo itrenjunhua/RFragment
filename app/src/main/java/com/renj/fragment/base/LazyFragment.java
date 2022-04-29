@@ -114,6 +114,7 @@ public abstract class LazyFragment extends BaseFragment {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
+        Logger.i(TAG + " onHiddenChanged ============= hidden: " + hidden);
         hiddenAndVisibleStatusVisible = !hidden;
 
         if (!hidden) {

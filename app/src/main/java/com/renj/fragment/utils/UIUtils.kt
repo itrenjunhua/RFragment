@@ -38,7 +38,7 @@ object UIUtils {
      */
     @JvmStatic
     val context: Context?
-        get() = MyApplication.getApplication()
+        get() = MyApplication.application
 
     /**
      * dip转换成px

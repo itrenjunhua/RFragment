@@ -59,6 +59,16 @@ class ReplaceFragmentActivity : BaseActivity() {
     private fun changeShowFragment(showFragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fl_content, showFragment)
+            // .addToBackStack("replaceFragment") // 增加到回退栈
             .commitAllowingStateLoss()
+    }
+
+    // 重写返回按钮，判断回退栈是否有未出栈的Fragment
+    override fun handlerOnBack() {
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            supportFragmentManager.popBackStack()
+        } else {
+            super.handlerOnBack()
+        }
     }
 }

@@ -28,7 +28,7 @@ object ResUtils {
      */
     @JvmStatic
     fun getResUri(resId: Int): String {
-        val r: Resources = MyApplication.getApplication().resources
+        val r: Resources = MyApplication.application.resources
         val uri = Uri.parse(
             ContentResolver.SCHEME_ANDROID_RESOURCE + "://"
                     + r.getResourcePackageName(resId) + "/"
@@ -43,7 +43,7 @@ object ResUtils {
      */
     @JvmStatic
     fun getColor(colorId: Int): Int {
-        val r: Resources = MyApplication.getApplication().resources
+        val r: Resources = MyApplication.application.resources
         return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             r.getColor(colorId, null)
         } else {
@@ -53,6 +53,6 @@ object ResUtils {
 
     @JvmStatic
     fun getString(stringId: Int): String {
-        return MyApplication.getApplication().getString(stringId)
+        return MyApplication.application.getString(stringId)
     }
 }
