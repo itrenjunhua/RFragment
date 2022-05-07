@@ -45,6 +45,12 @@ public abstract class LazyFragment extends BaseFragment {
     private boolean hiddenAndVisibleStatusVisible = true;
 
     @Override
+    protected void structureMethod() {
+        super.structureMethod();
+        Logger.i(TAG + " structureMethod ============= ");
+    }
+
+    @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         Logger.i(TAG + " onAttach ============= ");

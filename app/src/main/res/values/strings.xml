@@ -10,4 +10,14 @@
     <string name="replace_fragment">使用 replace 替换页面 Fragment</string>
     <string name="replace_fragment1">Fragment1替换</string>
     <string name="replace_fragment2">Fragment2替换</string>
+
+    <string name="vp_fragment">ViewPager 中使用 Fragment</string>
+    <string name="vp_title1">Title1</string>
+    <string name="vp_title2">Title2</string>
+    <string name="vp_title3">Title3</string>
+    <string name="vp_title4">Title4</string>
+    <string name="vp_tab1">ViewPager Tab Fragment1</string>
+    <string name="vp_tab2">ViewPager Tab Fragment2</string>
+    <string name="vp_tab3">ViewPager Tab Fragment3</string>
+    <string name="vp_tab4">ViewPager Tab Fragment4</string>
 </resources>
