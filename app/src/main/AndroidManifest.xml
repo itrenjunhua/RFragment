@@ -29,6 +29,10 @@
             android:label="@string/replace_fragment" />
 
         <activity
+            android:name=".replace.DefaultReplaceActivity"
+            android:label="@string/replace_def_fragment" />
+
+        <activity
             android:name=".vp.VpFragmentActivity"
             android:label="@string/vp_fragment" />
     </application>

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.widget.TextView
 import com.renj.fragment.add.AddFragmentActivity
 import com.renj.fragment.base.BaseActivity
+import com.renj.fragment.replace.DefaultReplaceActivity
 import com.renj.fragment.replace.ReplaceFragmentActivity
 import com.renj.fragment.vp.VpFragmentActivity
 
@@ -27,6 +28,9 @@ class MainActivity : BaseActivity() {
 
         findViewById<TextView>(R.id.tv_replace_fragment).setOnClickListener {
             ReplaceFragmentActivity.launch(this)
+        }
+        findViewById<TextView>(R.id.tv_replace_def_fragment).setOnClickListener {
+            DefaultReplaceActivity.launch(this)
         }
 
         findViewById<TextView>(R.id.tv_vp_fragment).setOnClickListener {

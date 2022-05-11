@@ -19,9 +19,14 @@
         android:text="@string/replace_fragment" />
 
     <TextView
+        android:id="@+id/tv_replace_def_fragment"
+        style="@style/style_main_bt"
+        android:layout_marginTop="12dp"
+        android:text="@string/replace_def_fragment" />
+
+    <TextView
         android:id="@+id/tv_vp_fragment"
         style="@style/style_main_bt"
         android:layout_marginTop="12dp"
         android:text="@string/vp_fragment" />
-
 </LinearLayout>
