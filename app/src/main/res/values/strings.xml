@@ -12,13 +12,20 @@
     <string name="replace_fragment1">Fragment1替换</string>
     <string name="replace_fragment2">Fragment2替换</string>
 
-    <string name="vp_fragment">ViewPager 中使用 Fragment</string>
     <string name="vp_title1">Title1</string>
     <string name="vp_title2">Title2</string>
     <string name="vp_title3">Title3</string>
     <string name="vp_title4">Title4</string>
+
+    <string name="vp_fragment">ViewPager 中使用 Fragment</string>
     <string name="vp_tab1">ViewPager Tab Fragment1</string>
     <string name="vp_tab2">ViewPager Tab Fragment2</string>
     <string name="vp_tab3">ViewPager Tab Fragment3</string>
     <string name="vp_tab4">ViewPager Tab Fragment4</string>
+
+    <string name="vp2_fragment">ViewPager2 中使用 Fragment</string>
+    <string name="vp2_tab1">ViewPager2 Tab Fragment1</string>
+    <string name="vp2_tab2">ViewPager2 Tab Fragment2</string>
+    <string name="vp2_tab3">ViewPager2 Tab Fragment3</string>
+    <string name="vp2_tab4">ViewPager2 Tab Fragment4</string>
 </resources>

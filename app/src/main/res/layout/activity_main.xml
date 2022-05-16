@@ -29,4 +29,10 @@
         style="@style/style_main_bt"
         android:layout_marginTop="12dp"
         android:text="@string/vp_fragment" />
+
+    <TextView
+        android:id="@+id/tv_vp2_fragment"
+        style="@style/style_main_bt"
+        android:layout_marginTop="12dp"
+        android:text="@string/vp2_fragment" />
 </LinearLayout>

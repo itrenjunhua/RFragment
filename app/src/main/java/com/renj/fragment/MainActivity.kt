@@ -7,6 +7,7 @@ import com.renj.fragment.base.BaseActivity
 import com.renj.fragment.replace.DefaultReplaceActivity
 import com.renj.fragment.replace.ReplaceFragmentActivity
 import com.renj.fragment.vp.VpFragmentActivity
+import com.renj.fragment.vp2.Vp2FragmentActivity
 
 class MainActivity : BaseActivity() {
     override fun getLayoutId(): Int {
@@ -35,6 +36,10 @@ class MainActivity : BaseActivity() {
 
         findViewById<TextView>(R.id.tv_vp_fragment).setOnClickListener {
             VpFragmentActivity.launch(this)
+        }
+
+        findViewById<TextView>(R.id.tv_vp2_fragment).setOnClickListener {
+            Vp2FragmentActivity.launch(this)
         }
     }
 }

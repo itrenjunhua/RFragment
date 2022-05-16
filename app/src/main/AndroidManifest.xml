@@ -35,6 +35,10 @@
         <activity
             android:name=".vp.VpFragmentActivity"
             android:label="@string/vp_fragment" />
+
+        <activity
+            android:name=".vp2.Vp2FragmentActivity"
+            android:label="@string/vp2_fragment" />
     </application>
 
 </manifest>
