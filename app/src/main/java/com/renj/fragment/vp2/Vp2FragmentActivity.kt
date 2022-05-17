@@ -30,19 +30,19 @@ class Vp2FragmentActivity : BaseActivity() {
 
     private var fragments = listOf(
         Vp2Fragment.newInstance(
-            ResUtils.getString(R.string.vp_tab1),
+            ResUtils.getString(R.string.vp2_tab1),
             ResUtils.getColor(R.color.color_content_bg_one)
         ),
         Vp2Fragment.newInstance(
-            ResUtils.getString(R.string.vp_tab2),
+            ResUtils.getString(R.string.vp2_tab2),
             ResUtils.getColor(R.color.color_content_bg_two)
         ),
         Vp2Fragment.newInstance(
-            ResUtils.getString(R.string.vp_tab3),
+            ResUtils.getString(R.string.vp2_tab3),
             ResUtils.getColor(R.color.color_content_bg_three)
         ),
         Vp2Fragment.newInstance(
-            ResUtils.getString(R.string.vp_tab4),
+            ResUtils.getString(R.string.vp2_tab4),
             ResUtils.getColor(R.color.color_content_bg_four)
         )
     )
