@@ -1,5 +1,6 @@
 package com.renj.fragment.vp2
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
@@ -25,6 +26,8 @@ class Vp2Fragment : LazyFragment() {
     private lateinit var llContent: LinearLayout
     private lateinit var tvContent: TextView
 
+    private lateinit var dataChangeListener: FragmentDataChangeListener
+
     companion object {
         fun newInstance(content: String, color: Int): Vp2Fragment {
             val arguments = Bundle()
@@ -45,6 +48,10 @@ class Vp2Fragment : LazyFragment() {
         rootView?.apply {
             llContent = findViewById(R.id.ll_content)
             tvContent = findViewById(R.id.tv_content)
+
+            tvContent.setOnClickListener {
+                dataChangeListener.onDataChange("Fragment 新数据")
+            }
         }
     }
 
@@ -58,5 +65,10 @@ class Vp2Fragment : LazyFragment() {
             )
             tvContent.text = getString("content", "")
         }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        dataChangeListener = activity as FragmentDataChangeListener
     }
 }

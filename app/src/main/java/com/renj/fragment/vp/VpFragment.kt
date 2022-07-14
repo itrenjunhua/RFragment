@@ -28,9 +28,9 @@ class VpFragment : LazyFragment() {
     private lateinit var llContent: LinearLayout
     private lateinit var tvContent: TextView
 
-    private var dataChangeListener = object : DataChangeListener {
+    private var activityDataChangeListener = object : ActivityDataChangeListener {
         override fun onDataChange(message: String) {
-            Logger.i("DataChangeListener: $message")
+            Logger.i("ActivityDataChangeListener: $message")
         }
     }
 
@@ -74,12 +74,12 @@ class VpFragment : LazyFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (activity as VpFragmentActivity).registerListener(dataChangeListener)
+        (activity as VpFragmentActivity).registerListener(activityDataChangeListener)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (activity as VpFragmentActivity).unRegisterListener(dataChangeListener)
+        (activity as VpFragmentActivity).unRegisterListener(activityDataChangeListener)
     }
 }

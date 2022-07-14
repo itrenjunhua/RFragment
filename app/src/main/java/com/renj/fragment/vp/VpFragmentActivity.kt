@@ -28,7 +28,7 @@ class VpFragmentActivity : BaseActivity() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager
 
-    private val listenerList = ArrayList<DataChangeListener>()
+    private val listenerList = ArrayList<ActivityDataChangeListener>()
 
     private var fragments = listOf(
         VpFragment.newInstance(
@@ -96,15 +96,15 @@ class VpFragmentActivity : BaseActivity() {
     /**
      * 注册监听
      */
-    open fun registerListener(dataChangeListener: DataChangeListener) {
-        listenerList.add(dataChangeListener)
+    open fun registerListener(activityDataChangeListener: ActivityDataChangeListener) {
+        listenerList.add(activityDataChangeListener)
     }
 
     /**
      * 移除监听
      */
-    open fun unRegisterListener(dataChangeListener: DataChangeListener) {
-        listenerList.remove(dataChangeListener)
+    open fun unRegisterListener(activityDataChangeListener: ActivityDataChangeListener) {
+        listenerList.remove(activityDataChangeListener)
     }
 
     /**

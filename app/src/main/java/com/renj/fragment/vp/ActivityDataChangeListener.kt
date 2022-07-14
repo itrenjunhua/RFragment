@@ -13,6 +13,6 @@ package com.renj.fragment.vp
  *
  * ======================================================================
  */
-interface DataChangeListener {
+interface ActivityDataChangeListener {
     fun onDataChange(message: String)
 }

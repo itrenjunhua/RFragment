@@ -9,6 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.renj.fragment.R
 import com.renj.fragment.base.BaseActivity
+import com.renj.fragment.utils.Logger
 import com.renj.fragment.utils.ResUtils
 
 /**
@@ -24,7 +25,7 @@ import com.renj.fragment.utils.ResUtils
  *
  * ======================================================================
  */
-class Vp2FragmentActivity : BaseActivity() {
+class Vp2FragmentActivity : BaseActivity(), FragmentDataChangeListener {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager2
 
@@ -101,9 +102,7 @@ class Vp2FragmentActivity : BaseActivity() {
 
             currentItem = 0
         }
-
     }
-
 
     class Vp2FragmentAdapter(
         activity: FragmentActivity,
@@ -118,5 +117,9 @@ class Vp2FragmentActivity : BaseActivity() {
             return fragments[position]
         }
 
+    }
+
+    override fun onDataChange(message: String) {
+        Logger.i("FragmentDataChangeListener: $message")
     }
 }
