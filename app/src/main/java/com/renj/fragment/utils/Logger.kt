@@ -17,6 +17,7 @@ import android.util.Log
  * ======================================================================
  */
 object Logger {
+    private var showLog: Boolean = true
     private const val DEFAULT_TAG = "Renj"
     private var tag = DEFAULT_TAG
 
@@ -26,12 +27,19 @@ object Logger {
     }
 
     @JvmStatic
+    fun showLog(showLog: Boolean) {
+        Logger.showLog = showLog
+    }
+
+    @JvmStatic
     fun i(msg: String?) {
-        if (!TextUtils.isEmpty(msg)) Log.i(tag, msg!!)
+        if (showLog)
+            if (!TextUtils.isEmpty(msg)) Log.i(tag, msg!!)
     }
 
     @JvmStatic
     fun e(msg: String?) {
-        if (!TextUtils.isEmpty(msg)) Log.e(tag, msg!!)
+        if (showLog)
+            if (!TextUtils.isEmpty(msg)) Log.e(tag, msg!!)
     }
 }

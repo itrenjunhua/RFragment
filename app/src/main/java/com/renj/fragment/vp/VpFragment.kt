@@ -1,11 +1,14 @@
 package com.renj.fragment.vp
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.renj.fragment.R
 import com.renj.fragment.base.LazyFragment
+import com.renj.fragment.utils.Logger
 import com.renj.fragment.utils.ResUtils
 
 /**
@@ -24,6 +27,12 @@ import com.renj.fragment.utils.ResUtils
 class VpFragment : LazyFragment() {
     private lateinit var llContent: LinearLayout
     private lateinit var tvContent: TextView
+
+    private var dataChangeListener = object : DataChangeListener {
+        override fun onDataChange(message: String) {
+            Logger.i("DataChangeListener: $message")
+        }
+    }
 
     companion object {
         fun newInstance(content: String, color: Int): VpFragment {
@@ -58,5 +67,19 @@ class VpFragment : LazyFragment() {
             )
             tvContent.text = getString("content", "")
         }
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        (activity as VpFragmentActivity).registerListener(dataChangeListener)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        (activity as VpFragmentActivity).unRegisterListener(dataChangeListener)
     }
 }

@@ -236,6 +236,18 @@ public abstract class LazyFragment extends BaseFragment {
     }
 
     @Override
+    public void onStart() {
+        super.onStart();
+        Logger.i(TAG + " onStart ============= ");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Logger.i(TAG + " onStop ============= ");
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         Logger.i(TAG + " onDestroyView ============= ");

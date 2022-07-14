@@ -28,6 +28,8 @@ class VpFragmentActivity : BaseActivity() {
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager: ViewPager
 
+    private val listenerList = ArrayList<DataChangeListener>()
+
     private var fragments = listOf(
         VpFragment.newInstance(
             ResUtils.getString(R.string.vp_tab1),
@@ -82,6 +84,29 @@ class VpFragmentActivity : BaseActivity() {
         viewPager.currentItem = 0
     }
 
+    override fun initListener() {
+        super.initListener()
+        titleView.titleContentView.setOnClickListener {
+            for (dataChangeListener in listenerList) {
+                dataChangeListener.onDataChange("currentItem: " + viewPager.currentItem)
+            }
+        }
+    }
+
+    /**
+     * 注册监听
+     */
+    open fun registerListener(dataChangeListener: DataChangeListener) {
+        listenerList.add(dataChangeListener)
+    }
+
+    /**
+     * 移除监听
+     */
+    open fun unRegisterListener(dataChangeListener: DataChangeListener) {
+        listenerList.remove(dataChangeListener)
+    }
+
     /**
      * FragmentPagerAdapter 和 FragmentStatePagerAdapter 的差别，可以从这两个类的 destroyItem() 方法中查看：
      * FragmentPagerAdapter：只是销毁了fragment的视图，但是没有移除它。具体生命周期方法过程 => onCreateView() -> onDestroyView()
@@ -93,7 +118,7 @@ class VpFragmentActivity : BaseActivity() {
         private val titles: List<String>
     ) :
 //         FragmentPagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
-         FragmentStatePagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+        FragmentStatePagerAdapter(manager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
         override fun getCount(): Int {
             return fragments.size
         }
